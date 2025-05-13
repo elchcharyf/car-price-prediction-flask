@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction du Prix des Véhicules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚗 Prédiction du Prix des Véhicules</h1>
+    <p>Cette application prédit le <strong>prix estimé</strong> d'un véhicule en fonction de ses caractéristiques.</p>
+
+    <form method="POST">
+        <div class="input-group">
+            <label for="symboling">Symboling</label>
+            <input type="number" name="symboling" id="symboling" min="-3" max="3" value="0" required>
+        </div>
+
+        <div class="input-group">
+            <label for="fueltype">Fuel Type</label>
+            <select name="fueltype" id="fueltype" required>
+                <option value="gas">Gas</option>
+                <option value="diesel">Diesel</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="aspiration">Aspiration</label>
+            <select name="aspiration" id="aspiration" required>
+                <option value="std">Standard</option>
+                <option value="turbo">Turbo</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="doornumber">Number of Doors</label>
+            <select name="doornumber" id="doornumber" required>
+                <option value="two">Two</option>
+                <option value="four">Four</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="carbody">Car Body</label>
+            <select name="carbody" id="carbody" required>
+                <option value="convertible">Convertible</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="wagon">Wagon</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="drivewheel">Drive Wheel</label>
+            <select name="drivewheel" id="drivewheel" required>
+                <option value="rwd">RWD</option>
+                <option value="fwd">FWD</option>
+                <option value="4wd">4WD</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="enginelocation">Engine Location</label>
+            <select name="enginelocation" id="enginelocation" required>
+                <option value="front">Front</option>
+                <option value="rear">Rear</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="wheelbase">Wheelbase</label>
+            <input type="number" name="wheelbase" id="wheelbase" min="80" max="120" value="100" required>
+        </div>
+
+        <div class="input-group">
+            <label for="enginesize">Engine Size</label>
+            <input type="number" name="enginesize" id="enginesize" min="50" max="300" value="100" required>
+        </div>
+
+        <div class="input-group">
+            <label for="fuelsystem">Fuel System</label>
+            <select name="fuelsystem" id="fuelsystem" required>
+                <option value="mpfi">MPFI</option>
+                <option value="2bbl">2BBL</option>
+                <option value="1bbl">1BBL</option>
+                <option value="spdi">SPDI</option>
+                <option value="mfi">MFI</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="boreratio">Bore Ratio</label>
+            <input type="number" name="boreratio" id="boreratio" min="2" max="5" value="3" required>
+        </div>
+
+        <div class="input-group">
+            <label for="stroke">Stroke</label>
+            <input type="number" name="stroke" id="stroke" min="2" max="5" value="3" required>
+        </div>
+
+        <div class="input-group">
+            <label for="compressionratio">Compression Ratio</label>
+            <input type="number" name="compressionratio" id="compressionratio" min="5" max="15" value="10" required>
+        </div>
+
+        <div class="input-group">
+            <label for="horsepower">Horsepower</label>
+            <input type="number" name="horsepower" id="horsepower" min="50" max="300" value="100" required>
+        </div>
+
+        <div class="input-group">
+            <label for="peakrpm">Peak RPM</label>
+            <input type="number" name="peakrpm" id="peakrpm" min="4000" max="7000" value="5000" required>
+        </div>
+
+        <div class="input-group">
+            <label for="citympg">City MPG</label>
+            <input type="number" name="citympg" id="citympg" min="10" max="50" value="20" required>
+        </div>
+
+        <div class="input-group">
+            <label for="highwaympg">Highway MPG</label>
+            <input type="number" name="highwaympg" id="highwaympg" min="10" max="50" value="25" required>
+        </div>
+
+        <button type="submit">Prédire le prix</button>
+    </form>
+
+    {% if price is not none %}
+    <h3>💰 Le prix estimé du véhicule est : <strong>{{ price | round(2) }}</strong> USD</h3>
+    {% endif %}
+</div>
+
+</body>
+</html>
